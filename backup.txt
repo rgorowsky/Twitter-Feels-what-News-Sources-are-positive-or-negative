@@ -1,0 +1,87 @@
+what is the average cost to rent a film in the sakila stores?
+	SELECT sum(rental_rate) /  count(rental_rate) AS answer1
+FROM film;
+		2.980000
+
+what is the average renta. cost of films by rating?
+	SELECT sum(rental_rate) / count(rental_rate)
+FROM film
+WHERE rating = "G";	2.888876
+										"PG"	3.051856
+										"NC-17"	2.970952
+										"PG-13"	2.938718
+										"R"	3.034843
+
+===========================================================================================
+Warmup question: list the names and ID numbers of cities that are in the following list:	'Qalyub', 'Qinhuangdao', 'Qomsheh', 'Quilmes'
+
+	SELECT city_id, city
+FROM city
+WHERE city IN ('Qalyub', 'Qinhuangdao', 'Qomsheh', 'Quilmes');
+
+	
+		421	Qalyub
+		422	Qinhuangdao
+		423	Qomsheh
+		424	Quilmes
+
+Display the districts in the above list of cities:
+
+	SELECT c.city_id, c.city, a.district
+FROM address a 
+INNER JOIN city c
+ON a.city_id = a.city_id
+WHERE c.city IN ('Qalyub', 'Qinhuangdao', 'Qomsheh', 'Quilmes');
+
+		(many results)
+
+bonus:
+SELECT*
+FROM customer c
+WHERE c.address_id IN (
+SELECT address_id 
+FROM address a
+WHERE a.city_id IN (
+SELECT city_id
+FROM city ci
+WHERE ci.city LIKE 'Q%'
+));
+
+
+# second plot
+second_one = tweet_data_df.groupby(["twt_source"]).mean(some other stuff)
+pd.DataFrame(second_one)
+second_one[0]
+
+# make x and y variables
+y_data = [second_one]
+x_data = [np.arange(len(second_one))]
+
+#height = np.arange(len[])
+#make a bar plot
+plt.bar(x_data[0], second_one[0])
+plt.bar(x_data[0], y_data)
+plt.bar(x_data[0], y_data)
+plt.bar(x_data[0], y_data)
+plt.bar(x_data[0], y_data)
+
+
+
+============================================================================================================
+
+# second plot
+second_one = tweet_data_df.groupby(["twt_source"]).mean()["twt_vader"]
+pd.DataFrame(second_one)
+second_one[0]
+
+# make x and y variables
+y_data = [second_one]
+x_data = [np.arange(len(second_one))]
+
+#height = np.arange(len[])
+# make a bar plot
+plt.bar(x_data[0], second_one)
+plt.bar(x_data[1], y_data)
+plt.bar(x_data[2], y_data)          
+plt.bar(x_data[3], y_data)
+plt.bar(x_data[4], y_data)
