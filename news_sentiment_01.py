@@ -33,7 +33,7 @@ target_users = [ "BBCNews",
 pp = pprint.PrettyPrinter(indent=4)
 
 #create the dictionary that we will put our columns (as lists) in
-counter = 0 
+counter = 0
 
 tweet_data = {"twt_source": [],
              "twt_text": [],
@@ -49,7 +49,7 @@ for users in target_users:
 
     # Loop through 5 pages of tweets (total 100 tweets per target user)
     for x in range(0, 5):
-        public_tweets = api.user_timeline(users, page=x)
+        public_tweets = api.user_timeline(users, page = x )
 
         #another for loop
         for tweet in public_tweets:
@@ -72,7 +72,7 @@ for users in target_users:
 
             #pp.pprint(tweet_data["twt_text"])
 
-# plot the first 
+# plot the first
 # put the dictionary into a data frame
 tweet_data_df = pd.DataFrame.from_dict(tweet_data)
 tweet_data_df["twt_source"].unique()
@@ -80,7 +80,7 @@ tweet_data_df["twt_source"].unique()
 tweet_data_df.head(5) # this will display the first 5 rows of the dataframe
 
 
-#OK - now that I have the plot looking kind of like how I want it - I 
+#OK - now that I have the plot looking kind of like how I want it - I
 # want to have the actual tweets ago column.  I'll make it from the twt_
 # counter column
 tweet_data_df['tweets_ago'] = abs(tweet_data_df['twt_counter'] - 100)
@@ -113,7 +113,7 @@ y_cbs = tweet_data_df[cbs].twt_vader
 y_cnn = tweet_data_df[cnn].twt_vader
 y_fox = tweet_data_df[fox].twt_vader
 y_nyt = tweet_data_df[nyt].twt_vader
-    
+
 # now overwrite the default x-label
 plt.scatter(x_bbc, y_bbc, label = "BBC")
 plt.scatter(x_cbs, y_cbs, label = "CBS")
