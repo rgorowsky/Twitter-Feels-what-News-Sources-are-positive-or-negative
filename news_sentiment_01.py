@@ -1,3 +1,4 @@
+# import packages
 
 # packages lists
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -8,7 +9,7 @@ import numpy as np
 import time
 import pprint
 import json
-import matplotlib 
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn
 from config import (consumer_key, consumer_secret,
